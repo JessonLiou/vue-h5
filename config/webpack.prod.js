@@ -1,18 +1,16 @@
-'use strict'
+// const webpack = require('webpack');
+const webpackMerge = require('webpack-merge')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-const common = require('./webpack.common.js');
+const common = require('./webpack.common.js')
 
 module.exports = webpackMerge(common, {
   mode: 'production',
   bail: true,
   plugins: [
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
   optimization: {
     minimize: true,
@@ -25,7 +23,7 @@ module.exports = webpackMerge(common, {
             // into invalid ecma 5 code. This is why the 'compress' and 'output'
             // sections only apply transformations that are ecma 5 safe
             // https://github.com/facebook/create-react-app/pull/4234
-            ecma: 8,
+            ecma: 8
           },
           compress: {
             ecma: 5,
@@ -39,27 +37,27 @@ module.exports = webpackMerge(common, {
             // https://github.com/facebook/create-react-app/issues/5250
             // Pending futher investigation:
             // https://github.com/terser-js/terser/issues/120
-            inline: 2,
+            inline: 2
           },
           mangle: {
-            safari10: true,
+            safari10: true
           },
           output: {
             ecma: 5,
             comments: false,
             // Turned on because emoji and regex is not minified properly using default
             // https://github.com/facebook/create-react-app/issues/2488
-            ascii_only: true,
-          },
+            ascii_only: true
+          }
         },
         // Use multi-process parallel running to improve the build speed
         // Default number of concurrent runs: os.cpus().length - 1
         parallel: true,
         // Enable file caching
         cache: true,
-        sourceMap: false,
+        sourceMap: false
       }),
       new OptimizeCSSAssetsPlugin()
     ]
   }
-});
+})

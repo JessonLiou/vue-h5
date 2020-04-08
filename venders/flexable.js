@@ -10,10 +10,9 @@
     } else {
       dpr = Math.ceil(dpr)
     }
-    var scale = 1 / dpr
 
     // reset viewport content
-    document.getElementsByName('viewport')[0].setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale + ',user-scalable=no')
+    document.getElementsByName('viewport')[0].setAttribute('content', 'width=device-width,initial-scale=' + 1 + ',maximum-scale=' + 1 + ',minimum-scale=' + 1 + ',user-scalable=no')
 
     var deviceWidth = docEle.clientWidth
     var deviceHeight = docEle.clientHeight

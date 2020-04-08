@@ -1,5 +1,4 @@
-@import './variables.scss';
-@import './mixins.scss';
+@import './variables.less';
 
 .clearfix {
   *zoom: 1;
@@ -17,7 +16,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @include font-size($font-size-base);
+  font-size: @font-size-base;
+  color: @text-color;
 }
 
 code {
